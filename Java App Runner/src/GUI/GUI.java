@@ -45,18 +45,20 @@ public class GUI{
     }
 
     //The active form will be the form rendered
-    public void setActiveForm(int n) {
+    public int setActiveForm(int n) {
         //Create Account Panel
         if(n == 1) {
             loginPanel.setVisible(false);
             applicationPanel.setVisible(false);
             createAccountPanel.setVisible(true);
+            return 1;
         }
         //Login Panel                                       //COMMENT: Make this a Switch statement
         if(n == 2) {
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(false);
             loginPanel.setVisible(true);
+            return 2;
         }
         //Application Panel
         if(n == 3){
@@ -74,13 +76,16 @@ public class GUI{
             loginPanel.setVisible(false);
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(true);
+            return 3;
         }
         if(n == 4){
             loginPanel.setVisible(false);
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(false);
             flashCardPanel.setVisible(true);
+            return 4;
         }
+        return 0;
     }
 
     //Sets the different attributes for the panels
@@ -158,6 +163,7 @@ public class GUI{
         menuBarPanel = menuForm.getMenuPanel();
         menuBarPanel.add(menuForm.getHamburgerIconButton());
         menuBarPanel.add(menuForm.getFlashCardNavButton());
+        menuBarPanel.add(menuForm.getApplicationNavButton());
     }
 
     ////Adds the different ui elements for the Application Panel

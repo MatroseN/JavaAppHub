@@ -1,7 +1,8 @@
 package GUI;
 
 import Handlers.HamburgerButtonHandler;
-import Handlers.SwitchToFlashCardFormHandler;
+import Handlers.menuFormToApplicationFormHandler;
+import Handlers.menuFormToFlashCardsHandler;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -51,8 +52,14 @@ public class MenuForm {
         hamburgerIconButton.setBounds(0, 0, 35, 30);
         hamburgerIconButton.addActionListener(actionListener);
 
+        applicationNavButton = new JButton();
+        applicationNavButton.setBounds(0, 35, 110, 25);
+        applicationNavButton.setHorizontalTextPosition(SwingConstants.LEFT);
+        applicationNavButton.setText("Home");
+        applicationNavButton.addActionListener(actionListener3);
+
         flashCardNavButton = new JButton();
-        flashCardNavButton.setBounds(0, 35, 110, 25);
+        flashCardNavButton.setBounds(115, 35, 110, 25);
         flashCardNavButton.setHorizontalTextPosition(SwingConstants.LEFT);
         flashCardNavButton.setText("Flash Cards");
         flashCardNavButton.addActionListener(actionListener2);
@@ -72,8 +79,8 @@ public class MenuForm {
         backgroundColor = new Color(red, green, blue);
     }
 
-    public void changeToFlashCardForm(){
-        gui.setActiveForm(4);
+    public void changeForm(int n){
+        gui.setActiveForm(n);
     }
 
     public JPanel getMenuPanel(){
@@ -92,6 +99,10 @@ public class MenuForm {
         return flashCardNavButton;
     }
 
+    public JButton getApplicationNavButton() {
+        return applicationNavButton;
+    }
+
     public GUI getGUI(){
         return gui;
     }
@@ -106,13 +117,15 @@ public class MenuForm {
 
 
     private ActionListener actionListener = new HamburgerButtonHandler(this);
-    private ActionListener actionListener2 = new SwitchToFlashCardFormHandler(this);
+    private ActionListener actionListener2 = new menuFormToFlashCardsHandler(this);
+    private ActionListener actionListener3 = new menuFormToApplicationFormHandler(this);
 
     private JPanel menuPanel;
 
    private Image hamburgerIcon;
    private JButton hamburgerIconButton;
    private JButton flashCardNavButton;
+   private JButton applicationNavButton;
 
     private GUI gui;
 }
