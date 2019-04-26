@@ -1,27 +1,27 @@
 package FlashCardModule;
 
 public class Card {
-    public Card(Question question, Answer answer){
+    public Card(String question, String answer){
         this.question = question;
         this.answer = answer;
     }
 
-    public Question getQuestion() {
+    public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question question) {
+    public void setQuestion(String question) {
         this.question = question;
     }
 
-    public Answer getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(Answer answer) {
+    public void setAnswer(String answer) {
         this.answer = answer;
     }
 
-    private Question question;
-    private Answer answer;
+    private String question;
+    private String answer;
 }

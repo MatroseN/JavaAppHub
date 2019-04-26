@@ -12,9 +12,23 @@ public class ToggleAnswerButtonHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(flashCardForm.getCardArea().getText()) {
+        toggleAnswer();
+    }
+
+    private void toggleAnswer(){
+        if(!hideAnswer){
             flashCardForm.showCardAreaAnswer();
+            hideAnswer = true;
+            return;
         }
+
+        if(hideAnswer){
+            flashCardForm.showCardAreaQuestion();
+            hideAnswer = false;
+            return;
+        }
+
     }
     private FlashCardForm flashCardForm;
+    private boolean hideAnswer = false;
 }
