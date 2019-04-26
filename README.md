@@ -1,5 +1,5 @@
 # JavaAppHub
-An app that includes some of my Java side projects
+**An app that includes some of my Java side projects**
 
 > The program lets you create an account and then login to try out some
 > of my Java projects bundled up into one place with a simple GUI.
