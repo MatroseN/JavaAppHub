@@ -1,13 +1,10 @@
 package FlashCardModule;
 
-import Handlers.SwitchToFlashCardFormHandler;
 import Handlers.ToggleAnswerButtonHandler;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class FlashCardForm {
     public FlashCardForm(){
@@ -24,9 +21,10 @@ public class FlashCardForm {
         buildTextAreas();
 
         flashCardSetup();
-        showCardAreaQuestion();
 
         addElements();
+
+        showCardAreaQuestion();
     }
 
     private void panelSetup(){
@@ -37,13 +35,7 @@ public class FlashCardForm {
     }
 
     private void flashCardSetup(){
-        question = new Question();
-        answer = new Answer();
-        flashCard = new Card(question, answer);
-        flashCard.getQuestion().setQuestionText("Who are you?");
-        flashCard.getAnswer().setAnswerText("I am me");
-        questionText = "Question: " + flashCard.getQuestion().getQuestionText();
-        answerText =  "Answer: " + flashCard.getAnswer().getAnswerText();
+        flashCard = new Card("Who is U?", "Me? I am me");
     }
 
     private void frameColors(){
@@ -68,11 +60,11 @@ public class FlashCardForm {
     }
 
     public void showCardAreaQuestion(){
-        cardArea.setText(questionText + "\n" + "\n");
+        cardArea.setText(flashCard.getQuestion());
     }
 
     public void showCardAreaAnswer(){
-        cardArea.setText(questionText + "\n" + "\n"  + answerText);
+        cardArea.setText(flashCard.getAnswer());
     }
 
     private void addElements(){
@@ -86,6 +78,10 @@ public class FlashCardForm {
 
     public JTextArea getCardArea(){
         return  cardArea;
+    }
+
+    public Card getFlashCard(){
+        return flashCard;
     }
 
     //Colors
@@ -102,10 +98,6 @@ public class FlashCardForm {
     private JPanel flashCardPanel;
 
     private Card flashCard;
-    private Answer answer;
-    private Question question;
-    private String questionText;
-    private String answerText;
 
     private ActionListener actionListener = new ToggleAnswerButtonHandler(this);
 }
