@@ -11,3 +11,11 @@ create table userAccount (
     primary key(userID)
 )engine = innodb;
 
+create table flashCard (
+	userID int,
+	cardID int not null auto_increment,
+	question text,
+    answer text,
+    primary key(cardID, userID),
+    foreign key(userID) references userAccount(userID)
+)engine = innodb
