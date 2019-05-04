@@ -1,8 +1,8 @@
-Drop Database login_system;
-create Database login_system;
-use login_system;
+DROP DATABASE loginSystem;
+CREATE DATABASE loginSystem;
+USE loginSystem;
 
-create table userAccount (
+CREATE TABLE userAccount (
 	userID int not null auto_increment,
     userMessage Text,
     accountType varchar (10) NULL DEFAULT 'USER',
@@ -11,11 +11,11 @@ create table userAccount (
     primary key(userID)
 )engine = innodb;
 
-create table flashCard (
+CREATE TABLE flashCard (
 	userID int,
 	cardID int not null auto_increment,
 	question text,
     answer text,
     primary key(cardID, userID),
     foreign key(userID) references userAccount(userID)
-)engine = innodb
+)engine = innodb;
