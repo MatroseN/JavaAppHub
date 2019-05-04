@@ -42,17 +42,25 @@ public class ApplicationForm {
         personalMessageArea = new JTextArea("hello");
         personalMessageArea.setBounds(250, 150, 300, 100);
         personalMessageArea.setEditable(false);
+        personalMessageArea.setBackground(messageColor());
+        personalMessageArea.setForeground(messageTextColor());
     }
 
     public void buildButtons(){
         editMessageButton = new JButton("Edit Text");
         editMessageButton.setBounds(250, 270, 100, 25);
         editMessageButton.addActionListener(actionListener);
+        editMessageButton.setBackground(buttonColor());
+        editMessageButton.setForeground(buttonTextColor());
+        editMessageButton.setOpaque(true);
 
         saveNewMessageButton = new JButton("Save");
         saveNewMessageButton.setBounds(450, 270, 100, 25);
         saveNewMessageButton.addActionListener(actionListener2);
         saveNewMessageButton.setVisible(false);
+        saveNewMessageButton.setBackground(buttonColor());
+        saveNewMessageButton.setForeground(buttonTextColor());
+        saveNewMessageButton.setOpaque(true);
     }
 
     public void addElements(){
@@ -71,6 +79,46 @@ public class ApplicationForm {
         green = 25;
         blue = 34;
         backgroundColor = new Color(red, green, blue);
+    }
+
+    private Color messageColor(){
+        Color color;
+        red = 0;
+        green = 50;
+        blue = 60;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color messageTextColor(){
+        Color color;
+        red = 225;
+        green = 225;
+        blue = 225;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color buttonColor(){
+        Color color;
+        red = 0;
+        green = 50;
+        blue = 60;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color buttonTextColor(){
+        Color color;
+        red = 225;
+        green = 225;
+        blue = 225;
+        color = new Color(red, green, blue);
+
+        return color;
     }
 
     public Color getBackgroundColor(){

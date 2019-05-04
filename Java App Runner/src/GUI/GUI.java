@@ -51,6 +51,7 @@ public class GUI{
             loginPanel.setVisible(false);
             applicationPanel.setVisible(false);
             createAccountPanel.setVisible(true);
+            menuBarPanel.setVisible(false);
             return 1;
         }
         //Login Panel                                       //COMMENT: Make this a Switch statement
@@ -58,6 +59,7 @@ public class GUI{
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(false);
             loginPanel.setVisible(true);
+            menuBarPanel.setVisible(false);
             return 2;
         }
         //Application Panel
@@ -76,6 +78,7 @@ public class GUI{
             loginPanel.setVisible(false);
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(true);
+            menuBarPanel.setVisible(true);
             return 3;
         }
         if(n == 4){
@@ -83,6 +86,7 @@ public class GUI{
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(false);
             flashCardPanel.setVisible(true);
+            menuBarPanel.setVisible(true);
             return 4;
         }
         return 0;
@@ -93,9 +97,9 @@ public class GUI{
         menuBarPanel.setSize(800, 60);
         menuBarPanel.setBounds(0, 0, 800, 30);
         menuBarPanel.setBackground(menuForm.getBackgroundColor());
-        createAccountPanel.setBounds(0, 30, 800, 570);
+        createAccountPanel.setBounds(0, 0, 800, 600);
         createAccountPanel.setBackground(createAccountForm.getBackgroundColor());
-        loginPanel.setBounds(0, 30, 800, 570);
+        loginPanel.setBounds(0, 0, 800, 600);
         loginPanel.setBackground(loginForm.getBackgroundColor());
         applicationPanel.setBounds(0, 30, 800, 570);
         applicationPanel.setBackground(applicationForm.getBackgroundColor());
@@ -114,7 +118,7 @@ public class GUI{
 
     //Builds a new frame and sets the attributes for the frame
     public void buildAndSetupFrame(){
-        frame = new JFrame("Login");
+        frame = new JFrame("App Runner");
 
         //Window size and location
         frame.setSize(800, 600);

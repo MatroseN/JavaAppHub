@@ -57,12 +57,18 @@ public class MenuForm {
         applicationNavButton.setHorizontalTextPosition(SwingConstants.LEFT);
         applicationNavButton.setText("Home");
         applicationNavButton.addActionListener(actionListener3);
+        applicationNavButton.setBackground(navButtonColor());
+        applicationNavButton.setForeground(navButtonTextColor());
+        applicationNavButton.setOpaque(true);
 
         flashCardNavButton = new JButton();
         flashCardNavButton.setBounds(115, 35, 110, 25);
         flashCardNavButton.setHorizontalTextPosition(SwingConstants.LEFT);
         flashCardNavButton.setText("Flash Cards");
         flashCardNavButton.addActionListener(actionListener2);
+        flashCardNavButton.setBackground(navButtonColor());
+        flashCardNavButton.setForeground(navButtonTextColor());
+        flashCardNavButton.setOpaque(true);
     }
 
 
@@ -73,10 +79,30 @@ public class MenuForm {
 
     public void frameColors(){
         //Frame
-        red = 20;
-        green = 20;
-        blue = 20;
+        red = 0;
+        green = 5;
+        blue = 15;
         backgroundColor = new Color(red, green, blue);
+    }
+
+    private Color navButtonColor(){
+        Color color;
+        red = 0;
+        green = 50;
+        blue = 60;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color navButtonTextColor(){
+        Color color;
+        red = 225;
+        green = 225;
+        blue = 225;
+        color = new Color(red, green, blue);
+
+        return color;
     }
 
     public void changeForm(int n){

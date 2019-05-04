@@ -46,17 +46,63 @@ public class FlashCardForm {
         backgroundColor = new Color(red, green, blue);
     }
 
+    private Color flashCardColor(){
+        Color color;
+        red = 0;
+        green = 50;
+        blue = 60;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color flashCardTextColor(){
+        Color color;
+        red = 225;
+        green = 225;
+        blue = 225;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color toggleButtonColor(){
+        Color color;
+        red = 0;
+        green = 50;
+        blue = 60;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
+    private Color toggleButtonTextColor(){
+        Color color;
+        red = 225;
+        green = 225;
+        blue = 225;
+        color = new Color(red, green, blue);
+
+        return color;
+    }
+
     private void buildButtons(){
         toggleAnswerButton = new JButton();
         toggleAnswerButton.setBounds(350, 375, 120, 30);
         toggleAnswerButton.setText("Toggle Answer");
         toggleAnswerButton.addActionListener(actionListener);
+
+        toggleAnswerButton.setBackground(toggleButtonColor());
+        toggleAnswerButton.setForeground(toggleButtonTextColor());
+        toggleAnswerButton.setOpaque(true);
     }
 
     private void buildTextAreas(){
         cardArea = new JTextArea();
         cardArea.setEditable(false);
         cardArea.setBounds(200, 150, 400, 200);
+        cardArea.setBackground(flashCardColor());
+        cardArea.setForeground(flashCardTextColor());
     }
 
     public void showCardAreaQuestion(){
