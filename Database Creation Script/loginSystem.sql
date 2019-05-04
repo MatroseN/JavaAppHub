@@ -2,7 +2,7 @@ DROP DATABASE loginSystem;
 CREATE DATABASE loginSystem;
 USE loginSystem;
 
-CREATE TABLE userAccount (
+CREATE TABLE useraccount (
 	userID int not null auto_increment,
     userMessage Text,
     accountType varchar (10) NULL DEFAULT 'USER',
@@ -11,7 +11,7 @@ CREATE TABLE userAccount (
     primary key(userID)
 )engine = innodb;
 
-CREATE TABLE flashCard (
+CREATE TABLE flashcard (
 	userID int,
 	cardID int not null auto_increment,
 	question text,
