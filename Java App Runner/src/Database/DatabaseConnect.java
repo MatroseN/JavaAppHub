@@ -13,7 +13,7 @@ public class DatabaseConnect {
     }
 
     public void connection() throws SQLException, ClassNotFoundException {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login_system?serverTimezone=CET", "root", "Schecterhellraisersolo6");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/loginSystem?serverTimezone=CET", "root", "Schecterhellraisersolo6");
             statement = con.createStatement();
     }
 
