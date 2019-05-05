@@ -12,10 +12,10 @@ CREATE TABLE useraccount (
 )engine = innodb;
 
 CREATE TABLE flashcard (
-	userID int,
 	cardID int not null auto_increment,
+    userID int,
 	question text,
     answer text,
-    primary key(cardID, userID),
-    foreign key(userID) references userAccount(userID)
+    owner int not null references useraccount(userID),
+    primary key(cardID, userID)
 )engine = innodb;
