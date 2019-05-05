@@ -1,6 +1,7 @@
 package FlashCardModule;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import Database.DatabaseConnect;
 
@@ -13,7 +14,12 @@ public class CreateAndAddFlashCard {
     private void initialize(){
         dbConnect = new DatabaseConnect();
         con = dbConnect.getCon();
-        createCard();
+    }
+
+    public void createCard(){
+        card = new Card("", "");
+        card.setQuestion(flashCardForm.getQuestionTextField().getText());
+        card.setAnswer(flashCardForm.getAnswerTextField().getText());
         try {
             addCardToDatabase();
         } catch (SQLException e) {
@@ -21,29 +27,43 @@ public class CreateAndAddFlashCard {
         }
     }
 
-    private void createCard(){
-        card = new Card("Do you like Pancakes?", "Jag har ätit PANNKAKA!!!");
-    }
-
     private void addCardToDatabase() throws SQLException {
         statement = dbConnect.getStatement();
-        String query = "insert into flashcard(question, answer) values (?, ?)";
+        String query = "insert into flashcard(question, answer, userID) values (?, ?, ?)";
 
         PreparedStatement preparedStatement = con.prepareStatement(query);
         preparedStatement.setString(1, card.getQuestion());
         preparedStatement.setString(2, card.getAnswer());
+        preparedStatement.setInt(3, getActiveUserID());
 
-        preparedStatement.execute(query);
+        preparedStatement.execute();
     }
 
-    private int getActiveUserID() throws SQLException {
+    public ArrayList<Card> getFlashCardsFromDatabase() throws SQLException {
+        ArrayList<Card> flashCards = new ArrayList<>();
+        statement = dbConnect.getStatement();
+        String query = "select question , answer from flashcard where userID=?";
+
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        preparedStatement.setInt(1, getActiveUserID());
+
+        resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            question = resultSet.getString(1);
+            answer = resultSet.getString(2);
+            flashCards.add(new Card(question, answer));
+        }
+        return flashCards;
+    }
+
+    public int getActiveUserID() throws SQLException {
         String activeUserUsername = flashCardForm.getGUI().getActiveUser().getActiveUserUserName();
         statement = dbConnect.getStatement();
         String query = "select (userID) from useraccount where userName =(?)";
 
         PreparedStatement preparedStatement = con.prepareStatement(query);
         preparedStatement.setString(1, activeUserUsername);
-        System.out.println(activeUserUsername);
 
         resultSet = preparedStatement.executeQuery();
 
@@ -51,15 +71,24 @@ public class CreateAndAddFlashCard {
         if(resultSet.next()){
             userID = resultSet.getInt(1);
         }
-        System.out.println(userID);
         return userID;
+    }
+
+    public String getQuestion(){
+        return question;
+    }
+
+    public String getAnswer(){
+        return answer;
     }
 
     private FlashCardForm flashCardForm;
     private Card card;
 
-    private String question;
-    private String answer;
+    private int cardIndex = 0;
+
+    private String question = "";
+    private String answer = "";
 
     //Database
     private DatabaseConnect dbConnect;
@@ -67,5 +96,4 @@ public class CreateAndAddFlashCard {
     private Statement statement;
     private ResultSet resultSet;
     private Connection con;
-
 }

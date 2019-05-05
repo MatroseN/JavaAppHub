@@ -2,11 +2,14 @@ package FlashCardModule;
 
 import GUI.GUI;
 import Handlers.CreateFlashCardButtonHandler;
+import Handlers.SwitchCardBackward;
+import Handlers.SwitchCardForward;
 import Handlers.ToggleAnswerButtonHandler;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class FlashCardForm {
     public FlashCardForm(GUI gui){
@@ -17,6 +20,7 @@ public class FlashCardForm {
     private void initialize(){
         //Colors
         frameColors();
+        textFieldColors();
 
         panelSetup();
 
@@ -39,6 +43,10 @@ public class FlashCardForm {
 
     private void flashCardSetup(){
         flashCard = new Card("Who is U?", "Me? I am me");
+    }
+
+    public void createAndAddFlashCardSetup(){
+        createAndAddFlashCard = new CreateAndAddFlashCard(this);
     }
 
     private void frameColors(){
@@ -91,7 +99,7 @@ public class FlashCardForm {
 
     private void buildButtons(){
         toggleAnswerButton = new JButton();
-        toggleAnswerButton.setBounds(350, 375, 120, 30);
+        toggleAnswerButton.setBounds(350, 300, 120, 30);
         toggleAnswerButton.setText("Toggle Answer");
         toggleAnswerButton.addActionListener(actionListener);
         toggleAnswerButton.setBackground(toggleButtonColor());
@@ -105,14 +113,45 @@ public class FlashCardForm {
         createNewCardButton.setForeground(toggleButtonTextColor());
         createNewCardButton.setOpaque(true);
         createNewCardButton.addActionListener(createFlashCardButtonHandler);
+
+        switchFlashcardButton = new JButton();
+        switchFlashcardButton.setBounds(500, 300, 100, 30);
+        switchFlashcardButton.setText("->");
+        switchFlashcardButton.setBackground(toggleButtonColor());
+        switchFlashcardButton.setForeground(toggleButtonTextColor());
+        switchFlashcardButton.setOpaque(true);
+        switchFlashcardButton.addActionListener(switchCardForward);
+
+        switchBackFlashCardButton = new JButton();
+        switchBackFlashCardButton.setBounds(200, 300, 100, 30);
+        switchBackFlashCardButton.setText("<-");
+        switchBackFlashCardButton.setBackground(toggleButtonColor());
+        switchBackFlashCardButton.setForeground(toggleButtonTextColor());
+        switchBackFlashCardButton.setOpaque(true);
+        switchBackFlashCardButton.addActionListener(switchCardBackward);
+        switchBackFlashCardButton.setVisible(false);
     }
 
     private void buildTextAreas(){
         cardArea = new JTextArea();
+        Font font = cardArea.getFont();
+        Font f2 = new Font(font.getFontName(), font.getStyle(), font.getSize()+3);
+        cardArea.setFont(f2);
+
         cardArea.setEditable(false);
-        cardArea.setBounds(200, 150, 400, 200);
+        cardArea.setBounds(200, 75, 400, 200);
         cardArea.setBackground(flashCardColor());
         cardArea.setForeground(flashCardTextColor());
+
+        questionTextField = new JTextField();
+        questionTextField.setBounds(220, 350, 300, 30);
+        questionTextField.setBackground(textFieldColor);
+        questionTextField.setForeground(textFieldTextColor);
+
+        answerTextField = new JTextField();
+        answerTextField.setBounds(220, 400, 300, 30);
+        answerTextField.setBackground(textFieldColor);
+        answerTextField.setForeground(textFieldTextColor);
     }
 
     public void showCardAreaQuestion(){
@@ -123,10 +162,82 @@ public class FlashCardForm {
         cardArea.setText(flashCard.getAnswer());
     }
 
+    public Card getCurrentFlashcard() throws SQLException {
+        Card card = flashCard;
+        try {
+            createAndAddFlashCard.getFlashCardsFromDatabase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if(flashCardIndex < createAndAddFlashCard.getFlashCardsFromDatabase().size()) {
+            card = createAndAddFlashCard.getFlashCardsFromDatabase().get(flashCardIndex);
+        }
+
+        if(flashCardIndex == createAndAddFlashCard.getFlashCardsFromDatabase().size()){
+            flashCardIndex = createAndAddFlashCard.getFlashCardsFromDatabase().size();
+        }
+
+        return card;
+    }
+
+    public void iterateFlashcardIndex(){
+        try {
+            if (flashCardIndex != createAndAddFlashCard.getFlashCardsFromDatabase().size()){
+                flashCardIndex += 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void backFlashcardIndex(){
+        if(flashCardIndex >=1) {
+            flashCardIndex -= 1;
+        }
+    }
+
+    public void resetFlashcardIndex(){
+        flashCardIndex = 0;
+    }
+
+    public void setBackButtonVisible(){
+        switchBackFlashCardButton.setVisible(true);
+    }
+
+    public void updateCurrentFlashcard(){
+        try {
+            flashCard = getCurrentFlashcard();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        showCardAreaAnswer();
+        showCardAreaQuestion();
+    }
+
     private void addElements(){
         flashCardPanel.add(cardArea);
         flashCardPanel.add(toggleAnswerButton);
         flashCardPanel.add(createNewCardButton);
+        flashCardPanel.add(switchFlashcardButton);
+        flashCardPanel.add(switchBackFlashCardButton);
+        flashCardPanel.add(questionTextField);
+        flashCardPanel.add(answerTextField);
+    }
+
+    public void textFieldColors(){
+        //Background
+        red = 150;
+        green = 150;
+        blue = 165;
+        textFieldColor = new Color(red, green, blue);
+
+        //Foreground
+        red = 32;
+        green = 35;
+        blue = 50;
+        textFieldTextColor = new Color(red, green, blue);
     }
 
     public JPanel getFlashCardPanel(){
@@ -145,6 +256,18 @@ public class FlashCardForm {
         return gui;
     }
 
+    public JTextField getQuestionTextField(){
+        return questionTextField;
+    }
+
+    public JTextField getAnswerTextField(){
+        return answerTextField;
+    }
+
+    public CreateAndAddFlashCard getCreateAndAddFlashCard(){
+        return createAndAddFlashCard;
+    }
+
     //Colors
     private Color backgroundColor;
 
@@ -153,15 +276,28 @@ public class FlashCardForm {
     private int green;
     private int blue;
 
+    Color textFieldColor;
+    Color textFieldTextColor;
+
     private JTextArea cardArea;
+    private JTextField questionTextField;
+    private JTextField answerTextField;
+
     private JButton toggleAnswerButton;
     private JButton createNewCardButton;
+    private JButton switchFlashcardButton;
+    private JButton switchBackFlashCardButton;
 
     private JPanel flashCardPanel;
 
     private Card flashCard;
     private GUI gui;
 
+    private int flashCardIndex = 0;
+
+    private SwitchCardForward switchCardForward = new SwitchCardForward(this);
+    private SwitchCardBackward switchCardBackward = new SwitchCardBackward(this);
+    private CreateAndAddFlashCard createAndAddFlashCard;
     private ActionListener actionListener = new ToggleAnswerButtonHandler(this);
     private ActionListener createFlashCardButtonHandler = new CreateFlashCardButtonHandler(this);
 }

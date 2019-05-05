@@ -5,6 +5,7 @@ import FlashCardModule.FlashCardForm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class CreateFlashCardButtonHandler implements ActionListener {
     public CreateFlashCardButtonHandler(FlashCardForm flashCardForm){
@@ -13,10 +14,17 @@ public class CreateFlashCardButtonHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         createAndAddFlashCard();
+        flashCardForm.createAndAddFlashCardSetup();
     }
 
     private void createAndAddFlashCard(){
         createAndAddFlashCard = new CreateAndAddFlashCard(flashCardForm);
+        createAndAddFlashCard.createCard();
+        try {
+            createAndAddFlashCard.getFlashCardsFromDatabase();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private CreateAndAddFlashCard createAndAddFlashCard;

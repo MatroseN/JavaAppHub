@@ -165,6 +165,10 @@ public class LoginForm{
         return loginButtonHandler.getUserNameOfSuccessfulLogin();
     }
 
+    public GUI getGUI(){
+        return gui;
+    }
+
     //RGB Colors
     private int red;
     private int green;
