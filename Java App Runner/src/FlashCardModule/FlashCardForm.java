@@ -1,5 +1,7 @@
 package FlashCardModule;
 
+import GUI.GUI;
+import Handlers.CreateFlashCardButtonHandler;
 import Handlers.ToggleAnswerButtonHandler;
 
 import javax.swing.*;
@@ -7,7 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class FlashCardForm {
-    public FlashCardForm(){
+    public FlashCardForm(GUI gui){
+        this.gui = gui;
         initialize();
     }
 
@@ -91,10 +94,17 @@ public class FlashCardForm {
         toggleAnswerButton.setBounds(350, 375, 120, 30);
         toggleAnswerButton.setText("Toggle Answer");
         toggleAnswerButton.addActionListener(actionListener);
-
         toggleAnswerButton.setBackground(toggleButtonColor());
         toggleAnswerButton.setForeground(toggleButtonTextColor());
         toggleAnswerButton.setOpaque(true);
+
+        createNewCardButton = new JButton();
+        createNewCardButton.setBounds(335, 450, 150, 30);
+        createNewCardButton.setText("Create Flashcard");
+        createNewCardButton.setBackground(toggleButtonColor());
+        createNewCardButton.setForeground(toggleButtonTextColor());
+        createNewCardButton.setOpaque(true);
+        createNewCardButton.addActionListener(createFlashCardButtonHandler);
     }
 
     private void buildTextAreas(){
@@ -116,6 +126,7 @@ public class FlashCardForm {
     private void addElements(){
         flashCardPanel.add(cardArea);
         flashCardPanel.add(toggleAnswerButton);
+        flashCardPanel.add(createNewCardButton);
     }
 
     public JPanel getFlashCardPanel(){
@@ -130,6 +141,10 @@ public class FlashCardForm {
         return flashCard;
     }
 
+    public GUI getGUI(){
+        return gui;
+    }
+
     //Colors
     private Color backgroundColor;
 
@@ -140,10 +155,13 @@ public class FlashCardForm {
 
     private JTextArea cardArea;
     private JButton toggleAnswerButton;
+    private JButton createNewCardButton;
 
     private JPanel flashCardPanel;
 
     private Card flashCard;
+    private GUI gui;
 
     private ActionListener actionListener = new ToggleAnswerButtonHandler(this);
+    private ActionListener createFlashCardButtonHandler = new CreateFlashCardButtonHandler(this);
 }

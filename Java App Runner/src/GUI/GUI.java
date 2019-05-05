@@ -180,7 +180,7 @@ public class GUI{
     }
 
     public void flashCardPanelSetup(){
-        flashCardForm = new FlashCardForm();
+        flashCardForm = new FlashCardForm(this);
 
         flashCardPanel = flashCardForm.getFlashCardPanel();
         flashCardPanel.add(flashCardForm.getCardArea());
