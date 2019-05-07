@@ -52,6 +52,7 @@ public class GUI{
             applicationPanel.setVisible(false);
             createAccountPanel.setVisible(true);
             menuBarPanel.setVisible(false);
+            flashCardPanel.setVisible(false);
             return 1;
         }
         //Login Panel                                       //COMMENT: Make this a Switch statement
@@ -60,6 +61,7 @@ public class GUI{
             applicationPanel.setVisible(false);
             loginPanel.setVisible(true);
             menuBarPanel.setVisible(false);
+            flashCardPanel.setVisible(false);
             return 2;
         }
         //Application Panel
@@ -202,6 +204,10 @@ public class GUI{
 
     public void logoutActiveUser(){
         activeUser = null;
+    }
+
+    public FlashCardForm getFlashcardform(){
+        return  flashCardForm;
     }
 
     //Frame

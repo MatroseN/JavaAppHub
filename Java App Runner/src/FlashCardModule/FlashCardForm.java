@@ -210,6 +210,10 @@ public class FlashCardForm {
         answerTextField.setText("");
     }
 
+    public void resetCardAreaText(){
+        cardArea.setText("press -> to continue");
+    }
+
     public void updateCurrentFlashcard(){
         try {
             flashCard = getCurrentFlashcard();

@@ -12,11 +12,13 @@ public class LogoutHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         logoutActiveUser();
-        menuForm.getGUI().setActiveForm(2);
+
     }
 
     private void logoutActiveUser(){
         menuForm.getGUI().logoutActiveUser();
+        menuForm.getGUI().setActiveForm(2);
+        menuForm.getGUI().getFlashcardform().resetCardAreaText();
     }
 
     private MenuForm menuForm;
