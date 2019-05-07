@@ -25,6 +25,8 @@ public class CreateFlashCardButtonHandler implements ActionListener {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        flashCardForm.resetCreateFlashcardFields();
     }
 
     private CreateAndAddFlashCard createAndAddFlashCard;

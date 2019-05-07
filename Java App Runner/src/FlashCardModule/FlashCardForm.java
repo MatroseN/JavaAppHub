@@ -205,6 +205,11 @@ public class FlashCardForm {
         switchBackFlashCardButton.setVisible(true);
     }
 
+    public void resetCreateFlashcardFields(){
+        questionTextField.setText("");
+        answerTextField.setText("");
+    }
+
     public void updateCurrentFlashcard(){
         try {
             flashCard = getCurrentFlashcard();

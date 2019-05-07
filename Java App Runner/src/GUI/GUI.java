@@ -79,6 +79,7 @@ public class GUI{
             createAccountPanel.setVisible(false);
             applicationPanel.setVisible(true);
             menuBarPanel.setVisible(true);
+            flashCardPanel.setVisible(false);
             return 3;
         }
         if(n == 4){
@@ -168,6 +169,7 @@ public class GUI{
         menuBarPanel.add(menuForm.getHamburgerIconButton());
         menuBarPanel.add(menuForm.getFlashCardNavButton());
         menuBarPanel.add(menuForm.getApplicationNavButton());
+        menuBarPanel.add(menuForm.getLogoutButton());
     }
 
     ////Adds the different ui elements for the Application Panel
@@ -196,6 +198,10 @@ public class GUI{
 
     public void setActiveUser(){
         activeUser = new ActiveUser(loginForm.getUserNameOfSucessfulLogin());
+    }
+
+    public void logoutActiveUser(){
+        activeUser = null;
     }
 
     //Frame

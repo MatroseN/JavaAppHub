@@ -1,6 +1,7 @@
 package GUI;
 
 import Handlers.HamburgerButtonHandler;
+import Handlers.LogoutHandler;
 import Handlers.menuFormToApplicationFormHandler;
 import Handlers.menuFormToFlashCardsHandler;
 
@@ -69,6 +70,15 @@ public class MenuForm {
         flashCardNavButton.setBackground(navButtonColor());
         flashCardNavButton.setForeground(navButtonTextColor());
         flashCardNavButton.setOpaque(true);
+
+        logoutButton = new JButton();
+        logoutButton.setBounds(230, 35, 110, 25);
+        logoutButton.setHorizontalTextPosition(SwingConstants.LEFT);
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(logoutHandler);
+        logoutButton.setBackground(navButtonColor());
+        logoutButton.setForeground(navButtonTextColor());
+        logoutButton.setOpaque(true);
     }
 
 
@@ -129,6 +139,10 @@ public class MenuForm {
         return applicationNavButton;
     }
 
+    public JButton getLogoutButton(){
+        return logoutButton;
+    }
+
     public GUI getGUI(){
         return gui;
     }
@@ -145,6 +159,7 @@ public class MenuForm {
     private ActionListener actionListener = new HamburgerButtonHandler(this);
     private ActionListener actionListener2 = new menuFormToFlashCardsHandler(this);
     private ActionListener actionListener3 = new menuFormToApplicationFormHandler(this);
+    private ActionListener logoutHandler = new LogoutHandler(this);
 
     private JPanel menuPanel;
 
@@ -152,6 +167,7 @@ public class MenuForm {
    private JButton hamburgerIconButton;
    private JButton flashCardNavButton;
    private JButton applicationNavButton;
+   private JButton logoutButton;
 
     private GUI gui;
 }
