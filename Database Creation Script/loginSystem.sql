@@ -1,3 +1,4 @@
+DROP Database loginSystem;
 create Database loginSystem;
 use loginSystem;
 
