@@ -13,8 +13,9 @@ CREATE TABLE useraccount (
 
 CREATE TABLE flashcard (
 	cardID int not null auto_increment,
+	userID int,
 	question text,
     answer text,
-    owner int not null references useraccount(userID),
+	foreign key(userID)references useraccount(userID),
     primary key(cardID, userID)
 )engine = innodb;
