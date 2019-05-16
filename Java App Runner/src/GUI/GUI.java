@@ -50,6 +50,7 @@ public class GUI{
     public int setActiveForm(int n) {
         switch(n){
             case 1:
+                dailyQuotePanel.setVisible(false);
                 loginPanel.setVisible(false);
                 applicationPanel.setVisible(false);
                 createAccountPanel.setVisible(true);
@@ -58,6 +59,7 @@ public class GUI{
                 return 1;
 
             case 2:
+                dailyQuotePanel.setVisible(false);
                 createAccountPanel.setVisible(false);
                 applicationPanel.setVisible(false);
                 loginPanel.setVisible(true);
@@ -77,6 +79,7 @@ public class GUI{
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                dailyQuotePanel.setVisible(false);
                 loginPanel.setVisible(false);
                 createAccountPanel.setVisible(false);
                 applicationPanel.setVisible(true);
@@ -85,12 +88,21 @@ public class GUI{
                 return 3;
 
             case 4:
+                dailyQuotePanel.setVisible(false);
                 loginPanel.setVisible(false);
                 createAccountPanel.setVisible(false);
                 applicationPanel.setVisible(false);
                 flashCardPanel.setVisible(true);
                 menuBarPanel.setVisible(true);
                 return 4;
+
+            case 5:
+                loginPanel.setVisible(false);
+                createAccountPanel.setVisible(false);
+                applicationPanel.setVisible(false);
+                flashCardPanel.setVisible(false);
+                menuBarPanel.setVisible(true);
+                dailyQuotePanel.setVisible(true);
 
             default:
                 return 0;
