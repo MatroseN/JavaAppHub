@@ -65,6 +65,7 @@ public class ApplicationForm {
     private void addElements(){
         applicationPanel.add(personalMessageArea);
         applicationPanel.add(editMessageButton);
+        applicationPanel.add(saveNewMessageButton);
     }
 
     public void userMessageSetup() throws SQLException {

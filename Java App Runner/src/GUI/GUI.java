@@ -180,8 +180,6 @@ public class GUI{
         applicationForm = new ApplicationForm(this);
 
         applicationPanel = applicationForm.getApplicationPanel();
-        applicationPanel.add(applicationForm.getPersonalMessageArea());
-        applicationPanel.add(applicationForm.getSaveNewMessageButton());
     }
 
     public void flashCardPanelSetup(){
