@@ -150,10 +150,6 @@ public class GUI{
         createAccountForm = new CreateAccountForm(this);
 
         createAccountPanel = createAccountForm.getCreateAccountForm();
-        createAccountPanel.add(createAccountForm.getLoginFormButton());
-        createAccountPanel.add(createAccountForm.getPasswordField());
-        createAccountPanel.add(createAccountForm.getPasswordMissmatch());
-        createAccountPanel.add(createAccountForm.getPasswordVerifyField());
     }
 
     //Adds the different ui elements for the Login Panel
