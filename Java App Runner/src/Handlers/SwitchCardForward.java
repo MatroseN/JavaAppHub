@@ -13,15 +13,17 @@ public class SwitchCardForward implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(!isPressed) {
+        if(!flashCardForm.getIsPressed()) {
             flashCardForm.createAndAddFlashCardSetup();
+            flashCardForm.updateCurrentFlashcard();
             flashCardForm.setBackButtonVisible();
+            flashCardForm.setIsPressed(true);
+            return;
         }
+
         flashCardForm.iterateFlashcardIndex();
         flashCardForm.updateCurrentFlashcard();
-        isPressed = true;
     }
 
-    private boolean isPressed = false;
     private FlashCardForm flashCardForm;
 }

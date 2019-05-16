@@ -19,6 +19,8 @@ public class LogoutHandler implements ActionListener {
         menuForm.getGUI().logoutActiveUser();
         menuForm.getGUI().setActiveForm(2);
         menuForm.getGUI().getFlashcardform().resetCardAreaText();
+        menuForm.getGUI().getFlashcardform().resetFlashcardIndex();
+        menuForm.getGUI().getFlashcardform().setIsPressed(false);
     }
 
     private MenuForm menuForm;

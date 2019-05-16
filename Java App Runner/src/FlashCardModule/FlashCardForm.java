@@ -279,6 +279,16 @@ public class FlashCardForm {
         return createAndAddFlashCard;
     }
 
+    public boolean getIsPressed(){
+        return isPressed;
+    }
+
+    public void setIsPressed(boolean f){
+        isPressed = f;
+    }
+
+    private boolean isPressed = false;
+
     //Colors
     private Color backgroundColor;
 
