@@ -40,6 +40,7 @@ public class CreateAccountButtonHandler implements ActionListener{
                 this.userName = createAccountForm.getUserNameFieldText();
                 createUserAccount = new CreateUserAccount(userName, createAccountForm);
                 createAccountForm.setPasswordMissmatchVisibility(false);
+                createAccountForm.getGUI().setActiveForm(2);
             }
 
         else {

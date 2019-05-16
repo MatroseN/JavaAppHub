@@ -186,6 +186,10 @@ public class CreateAccountForm{
         return loginFormButton;
     }
 
+    public GUI getGUI(){
+        return gui;
+    }
+
 
     public JPanel getCreateAccountForm(){
         return createAccountPanel;
