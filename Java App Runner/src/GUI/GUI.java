@@ -173,10 +173,6 @@ public class GUI{
         menuForm = new MenuForm(this);
 
         menuBarPanel = menuForm.getMenuPanel();
-        menuBarPanel.add(menuForm.getHamburgerIconButton());
-        menuBarPanel.add(menuForm.getFlashCardNavButton());
-        menuBarPanel.add(menuForm.getApplicationNavButton());
-        menuBarPanel.add(menuForm.getLogoutButton());
     }
 
     ////Adds the different ui elements for the Application Panel
