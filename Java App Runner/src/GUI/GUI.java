@@ -1,5 +1,6 @@
 package GUI;
 
+import DailyQuote.DailyQuoteForm;
 import Default.ActiveUser;
 import FlashCardModule.FlashCardForm;
 
@@ -18,6 +19,7 @@ public class GUI{
         loginFormSetup();
         flashCardPanelSetup();
         applicationPanelSetup();
+        dailyQuotePanelSetup();
         buildWindow();
     }
 
@@ -53,6 +55,7 @@ public class GUI{
             createAccountPanel.setVisible(true);
             menuBarPanel.setVisible(false);
             flashCardPanel.setVisible(false);
+            dailyQuotePanel.setVisible(false);
             return 1;
         }
         //Login Panel                                       //COMMENT: Make this a Switch statement
@@ -62,6 +65,7 @@ public class GUI{
             loginPanel.setVisible(true);
             menuBarPanel.setVisible(false);
             flashCardPanel.setVisible(false);
+            dailyQuotePanel.setVisible(false);
             return 2;
         }
         //Application Panel
@@ -82,6 +86,7 @@ public class GUI{
             applicationPanel.setVisible(true);
             menuBarPanel.setVisible(true);
             flashCardPanel.setVisible(false);
+            dailyQuotePanel.setVisible(false);
             return 3;
         }
         if(n == 4){
@@ -90,7 +95,17 @@ public class GUI{
             applicationPanel.setVisible(false);
             flashCardPanel.setVisible(true);
             menuBarPanel.setVisible(true);
+            dailyQuotePanel.setVisible(false);
             return 4;
+        }
+        if(n == 5){
+            loginPanel.setVisible(false);
+            createAccountPanel.setVisible(false);
+            applicationPanel.setVisible(false);
+            flashCardPanel.setVisible(false);
+            menuBarPanel.setVisible(true);
+            dailyQuotePanel.setVisible(true);
+            return 5;
         }
         return 0;
     }
@@ -109,6 +124,8 @@ public class GUI{
         flashCardPanel.setSize(800, 570);
         flashCardPanel.setBackground(applicationForm.getBackgroundColor());
         flashCardPanel.setBounds(0, 30, 800, 570);
+        dailyQuotePanel.setBackground(applicationForm.getBackgroundColor());
+        dailyQuotePanel.setBounds(0, 30, 800, 570);
     }
 
     public void toggleDropDown(){
@@ -138,6 +155,7 @@ public class GUI{
         frame.add(loginPanel);
         frame.add(applicationPanel);
         frame.add(flashCardPanel);
+        frame.add(dailyQuotePanel);
     }
 
     //Adds the different ui elements for the Create Account Panel
@@ -187,7 +205,12 @@ public class GUI{
         flashCardForm = new FlashCardForm(this);
 
         flashCardPanel = flashCardForm.getFlashCardPanel();
-        flashCardPanel.add(flashCardForm.getCardArea());
+    }
+
+    public void dailyQuotePanelSetup(){
+        dailyQuoteForm = new DailyQuoteForm(this);
+
+        dailyQuotePanel = dailyQuoteForm.getDailyQuotesPanel();
     }
 
     public GUI getGui() {
@@ -224,12 +247,14 @@ public class GUI{
     private MenuForm menuForm;
     private ApplicationForm applicationForm;
     private FlashCardForm flashCardForm;
+    private DailyQuoteForm dailyQuoteForm;
 
     private JPanel createAccountPanel;
     private JPanel loginPanel;
     private JPanel menuBarPanel;
     private JPanel applicationPanel;
     private JPanel flashCardPanel;
+    private JPanel dailyQuotePanel;
 
     private ActiveUser activeUser;
 }

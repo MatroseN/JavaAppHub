@@ -23,7 +23,7 @@ public class CreateAccountButtonHandler implements ActionListener{
         createUserAccount();
     }
 
-    public void createUserAccount(){
+    private void createUserAccount(){
 
         try {
             if(checkUsernameAvailablility()){
@@ -40,10 +40,9 @@ public class CreateAccountButtonHandler implements ActionListener{
                 this.userName = createAccountForm.getUserNameFieldText();
                 createUserAccount = new CreateUserAccount(userName, createAccountForm);
                 createAccountForm.setPasswordMissmatchVisibility(false);
-
             }
 
-        else{
+        else {
             createAccountForm.getPasswordMissmatch().setText("Passwords does not match!");
             createAccountForm.setPasswordMissmatchVisibility(true);
         }
@@ -51,7 +50,6 @@ public class CreateAccountButtonHandler implements ActionListener{
 
     private Boolean checkUsernameAvailablility() throws SQLException {
         String username = createAccountForm.getUserNameFieldText();
-        statement = dbConnect.getStatement();
 
         String query = "select (userName) from useraccount where (userName=?)";
 

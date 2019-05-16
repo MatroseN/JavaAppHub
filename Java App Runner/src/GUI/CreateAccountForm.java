@@ -106,7 +106,7 @@ public class CreateAccountForm{
         passwordVerifyField.setEchoChar('•');
     }
 
-    public void addElements(){
+    private void addElements(){
         createAccountPanel.add(createAccountButton);
         createAccountPanel.add(passwordField);
         createAccountPanel.add(passwordMissmatch);
@@ -114,7 +114,7 @@ public class CreateAccountForm{
         createAccountPanel.add(userNameField);
     }
 
-    public void frameColors(){
+    private void frameColors(){
         //Frame
         red = 16;
         green = 25;
@@ -122,7 +122,7 @@ public class CreateAccountForm{
         backgroundColor = new Color(red, green, blue);
     }
 
-    public void buttonColors(){
+    private void buttonColors(){
         //Buttons
         red = 200;
         green = 201;
@@ -130,7 +130,7 @@ public class CreateAccountForm{
         buttonColor = new Color(red, green, blue);
     }
 
-    public void textFieldColors(){
+    private void textFieldColors(){
         //Background
         red = 132;
         green = 137;
@@ -196,10 +196,10 @@ public class CreateAccountForm{
     private int blue;
 
     //Colors
-    Color backgroundColor;
-    Color buttonColor;
-    Color textFieldColor;
-    Color textFieldTextColor;
+    private Color backgroundColor;
+    private Color buttonColor;
+    private Color textFieldColor;
+    private Color textFieldTextColor;
 
     //Buttons
     private JButton createAccountButton;

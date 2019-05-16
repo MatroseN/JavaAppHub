@@ -37,8 +37,7 @@ public class ApplicationForm {
         applicationPanel.setVisible(false);
     }
 
-    public void buildTextAreas(){
-        Font font = new Font("Arial", Font.ITALIC + Font.BOLD, 14);
+    private void buildTextAreas(){
         personalMessageArea = new JTextArea("hello");
         personalMessageArea.setBounds(250, 150, 300, 100);
         personalMessageArea.setEditable(false);
@@ -46,7 +45,7 @@ public class ApplicationForm {
         personalMessageArea.setForeground(messageTextColor());
     }
 
-    public void buildButtons(){
+    private void buildButtons(){
         editMessageButton = new JButton("Edit Text");
         editMessageButton.setBounds(250, 270, 100, 25);
         editMessageButton.addActionListener(actionListener);
@@ -63,7 +62,7 @@ public class ApplicationForm {
         saveNewMessageButton.setOpaque(true);
     }
 
-    public void addElements(){
+    private void addElements(){
         applicationPanel.add(personalMessageArea);
         applicationPanel.add(editMessageButton);
     }
@@ -73,7 +72,7 @@ public class ApplicationForm {
         setPersonalMessageText(userMessage.getUserMessageFromDatabase());
     }
 
-    public void frameColors(){
+    private void frameColors(){
         //Frame
         red = 16;
         green = 25;
@@ -161,15 +160,14 @@ public class ApplicationForm {
     private int green;
     private int blue;
 
-    JPanel applicationPanel;
-    JTextArea personalMessageArea;
-    JButton editMessageButton;
-    JButton saveNewMessageButton;
+    private JPanel applicationPanel;
+    private JTextArea personalMessageArea;
+    private JButton editMessageButton;
+    private JButton saveNewMessageButton;
 
     private ActionListener actionListener = new EditMessageButtonHandler( this);
     private ActionListener actionListener2 = new SaveMessageButtonHandler(this);
 
-    private ActiveUser activeUser;
     private UserMessage userMessage;
     private GUI gui;
 }

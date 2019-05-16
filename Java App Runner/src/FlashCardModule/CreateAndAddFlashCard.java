@@ -16,14 +16,22 @@ public class CreateAndAddFlashCard {
         con = dbConnect.getCon();
     }
 
+    //Create a new Flash card if the text areas are not empty
     public void createCard(){
-        card = new Card("", "");
-        card.setQuestion(flashCardForm.getQuestionTextField().getText());
-        card.setAnswer(flashCardForm.getAnswerTextField().getText());
-        try {
-            addCardToDatabase();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(!flashCardForm.getAnswerTextField().getText().isBlank() && !flashCardForm.getQuestionTextField().getText().isBlank()) {
+
+            card = new Card("", "");
+            card.setQuestion(flashCardForm.getQuestionTextField().getText());
+            card.setAnswer(flashCardForm.getAnswerTextField().getText());
+
+            try {
+                addCardToDatabase();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }else {
+            flashCardForm.getQuestionTextField().setText("Both Fields must have text!");
         }
     }
 
