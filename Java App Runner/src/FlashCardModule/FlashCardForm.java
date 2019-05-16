@@ -116,7 +116,7 @@ public class FlashCardForm {
 
         switchFlashcardButton = new JButton();
         switchFlashcardButton.setBounds(500, 300, 100, 30);
-        switchFlashcardButton.setText("->");
+        switchFlashcardButton.setText(">");
         switchFlashcardButton.setBackground(toggleButtonColor());
         switchFlashcardButton.setForeground(toggleButtonTextColor());
         switchFlashcardButton.setOpaque(true);
@@ -124,7 +124,7 @@ public class FlashCardForm {
 
         switchBackFlashCardButton = new JButton();
         switchBackFlashCardButton.setBounds(200, 300, 100, 30);
-        switchBackFlashCardButton.setText("<-");
+        switchBackFlashCardButton.setText("<");
         switchBackFlashCardButton.setBackground(toggleButtonColor());
         switchBackFlashCardButton.setForeground(toggleButtonTextColor());
         switchBackFlashCardButton.setOpaque(true);
@@ -155,11 +155,11 @@ public class FlashCardForm {
     }
 
     public void showCardAreaQuestion(){
-        cardArea.setText(flashCard.getQuestion());
+        cardArea.setText("Q: " + flashCard.getQuestion());
     }
 
     public void showCardAreaAnswer(){
-        cardArea.setText(flashCard.getAnswer());
+        cardArea.setText("A: " + flashCard.getAnswer());
     }
 
     public Card getCurrentFlashcard() throws SQLException {

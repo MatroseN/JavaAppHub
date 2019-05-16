@@ -18,7 +18,7 @@ public class CreateAndAddFlashCard {
 
     //Create a new Flash card if the text areas are not empty
     public void createCard(){
-        if(!flashCardForm.getAnswerTextField().getText().isBlank() && !flashCardForm.getQuestionTextField().getText().isBlank()) {
+        if(!flashCardForm.getAnswerTextField().getText().isEmpty() && !flashCardForm.getQuestionTextField().getText().isEmpty()) {
 
             card = new Card(flashCardForm.getQuestionTextField().getText(), flashCardForm.getAnswerTextField().getText());
 
