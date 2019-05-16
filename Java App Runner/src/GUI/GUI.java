@@ -161,10 +161,6 @@ public class GUI{
         loginForm = new LoginForm(this);
 
         loginPanel = loginForm.getLoginForm();
-        loginPanel.add(loginForm.getUserNameField());
-        loginPanel.add(loginForm.getPasswordField());
-        loginPanel.add(loginForm.getLoginButton());
-        loginPanel.add(loginForm.getChangeFormButton());
     }
 
 
