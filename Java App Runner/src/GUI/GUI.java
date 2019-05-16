@@ -150,10 +150,6 @@ public class GUI{
         createAccountForm = new CreateAccountForm(this);
 
         createAccountPanel = createAccountForm.getCreateAccountForm();
-        createAccountPanel.add(createAccountForm.getLoginFormButton());
-        createAccountPanel.add(createAccountForm.getPasswordField());
-        createAccountPanel.add(createAccountForm.getPasswordMissmatch());
-        createAccountPanel.add(createAccountForm.getPasswordVerifyField());
     }
 
     //Adds the different ui elements for the Login Panel
@@ -161,10 +157,6 @@ public class GUI{
         loginForm = new LoginForm(this);
 
         loginPanel = loginForm.getLoginForm();
-        loginPanel.add(loginForm.getUserNameField());
-        loginPanel.add(loginForm.getPasswordField());
-        loginPanel.add(loginForm.getLoginButton());
-        loginPanel.add(loginForm.getChangeFormButton());
     }
 
 
@@ -173,10 +165,6 @@ public class GUI{
         menuForm = new MenuForm(this);
 
         menuBarPanel = menuForm.getMenuPanel();
-        menuBarPanel.add(menuForm.getHamburgerIconButton());
-        menuBarPanel.add(menuForm.getFlashCardNavButton());
-        menuBarPanel.add(menuForm.getApplicationNavButton());
-        menuBarPanel.add(menuForm.getLogoutButton());
     }
 
     ////Adds the different ui elements for the Application Panel
@@ -184,8 +172,6 @@ public class GUI{
         applicationForm = new ApplicationForm(this);
 
         applicationPanel = applicationForm.getApplicationPanel();
-        applicationPanel.add(applicationForm.getPersonalMessageArea());
-        applicationPanel.add(applicationForm.getSaveNewMessageButton());
     }
 
     public void flashCardPanelSetup(){

@@ -91,7 +91,12 @@ public class MenuForm {
     }
 
     private void addElements(){
+        //Adds the elements to the panel
         menuPanel.add(dailyQuoteNavButton);
+        menuPanel.add(hamburgerIconButton);
+        menuPanel.add(applicationNavButton);
+        menuPanel.add(flashCardNavButton);
+        menuPanel.add(logoutButton);
     }
 
 

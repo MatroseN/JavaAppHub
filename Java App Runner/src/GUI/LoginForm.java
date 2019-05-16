@@ -25,6 +25,7 @@ public class LoginForm{
         buildLabels();
         buildTextFields();
         panelSetup();
+        addElements();
     }
 
     private void panelSetup(){
@@ -93,6 +94,13 @@ public class LoginForm{
 
     public void buildLoginButtonhandler(){
        loginButtonHandler = new LoginButtonHandler(loginButton, userNameField, passwordField, this);
+    }
+
+    private void addElements(){
+        loginPanel.add(getUserNameField());
+        loginPanel.add(getPasswordField());
+        loginPanel.add(getLoginButton());
+        loginPanel.add(getChangeFormButton());
     }
 
     public void changeToCreateAccountForm(){

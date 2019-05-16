@@ -112,6 +112,7 @@ public class CreateAccountForm{
         createAccountPanel.add(passwordMissmatch);
         createAccountPanel.add(passwordVerifyField);
         createAccountPanel.add(userNameField);
+        createAccountPanel.add(loginFormButton);
     }
 
     private void frameColors(){
