@@ -48,66 +48,53 @@ public class GUI{
 
     //The active form will be the form rendered
     public int setActiveForm(int n) {
-        //Create Account Panel
-        if(n == 1) {
-            loginPanel.setVisible(false);
-            applicationPanel.setVisible(false);
-            createAccountPanel.setVisible(true);
-            menuBarPanel.setVisible(false);
-            flashCardPanel.setVisible(false);
-            dailyQuotePanel.setVisible(false);
-            return 1;
+        switch(n){
+            case 1:
+                loginPanel.setVisible(false);
+                applicationPanel.setVisible(false);
+                createAccountPanel.setVisible(true);
+                menuBarPanel.setVisible(false);
+                flashCardPanel.setVisible(false);
+                return 1;
+
+            case 2:
+                createAccountPanel.setVisible(false);
+                applicationPanel.setVisible(false);
+                loginPanel.setVisible(true);
+                menuBarPanel.setVisible(false);
+                flashCardPanel.setVisible(false);
+                return 2;
+
+            case 3:
+                setActiveUser();
+                try {
+                    applicationForm.userMessageSetup();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    applicationForm.getUserMessage().getUserMessageFromDatabase();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                loginPanel.setVisible(false);
+                createAccountPanel.setVisible(false);
+                applicationPanel.setVisible(true);
+                menuBarPanel.setVisible(true);
+                flashCardPanel.setVisible(false);
+                return 3;
+
+            case 4:
+                loginPanel.setVisible(false);
+                createAccountPanel.setVisible(false);
+                applicationPanel.setVisible(false);
+                flashCardPanel.setVisible(true);
+                menuBarPanel.setVisible(true);
+                return 4;
+
+            default:
+                return 0;
         }
-        //Login Panel                                       //COMMENT: Make this a Switch statement
-        if(n == 2) {
-            createAccountPanel.setVisible(false);
-            applicationPanel.setVisible(false);
-            loginPanel.setVisible(true);
-            menuBarPanel.setVisible(false);
-            flashCardPanel.setVisible(false);
-            dailyQuotePanel.setVisible(false);
-            return 2;
-        }
-        //Application Panel
-        if(n == 3){
-            setActiveUser();
-            try {
-                applicationForm.userMessageSetup();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            try {
-                applicationForm.getUserMessage().getUserMessageFromDatabase();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            loginPanel.setVisible(false);
-            createAccountPanel.setVisible(false);
-            applicationPanel.setVisible(true);
-            menuBarPanel.setVisible(true);
-            flashCardPanel.setVisible(false);
-            dailyQuotePanel.setVisible(false);
-            return 3;
-        }
-        if(n == 4){
-            loginPanel.setVisible(false);
-            createAccountPanel.setVisible(false);
-            applicationPanel.setVisible(false);
-            flashCardPanel.setVisible(true);
-            menuBarPanel.setVisible(true);
-            dailyQuotePanel.setVisible(false);
-            return 4;
-        }
-        if(n == 5){
-            loginPanel.setVisible(false);
-            createAccountPanel.setVisible(false);
-            applicationPanel.setVisible(false);
-            flashCardPanel.setVisible(false);
-            menuBarPanel.setVisible(true);
-            dailyQuotePanel.setVisible(true);
-            return 5;
-        }
-        return 0;
     }
 
     //Sets the different attributes for the panels
