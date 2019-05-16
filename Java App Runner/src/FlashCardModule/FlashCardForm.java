@@ -201,6 +201,10 @@ public class FlashCardForm {
         flashCardIndex = 0;
     }
 
+    public void setFlashCardIndex(int n){
+        flashCardIndex = n;
+    }
+
     public void setBackButtonVisible(){
         switchBackFlashCardButton.setVisible(true);
     }

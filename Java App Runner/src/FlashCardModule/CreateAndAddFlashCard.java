@@ -29,6 +29,12 @@ public class CreateAndAddFlashCard {
             }
 
             flashCardForm.resetCreateFlashcardFields();
+            try {
+                flashCardForm.setFlashCardIndex(getFlashCardsFromDatabase().size() - 1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            flashCardForm.updateCurrentFlashcard();
 
         }else {
             flashCardForm.getQuestionTextField().setText("Both Fields must have text!");

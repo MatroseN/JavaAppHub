@@ -26,7 +26,6 @@ public class CreateFlashCardButtonHandler implements ActionListener {
             e.printStackTrace();
         }
 
-
     }
 
     private CreateAndAddFlashCard createAndAddFlashCard;
