@@ -20,9 +20,7 @@ public class CreateAndAddFlashCard {
     public void createCard(){
         if(!flashCardForm.getAnswerTextField().getText().isBlank() && !flashCardForm.getQuestionTextField().getText().isBlank()) {
 
-            card = new Card("", "");
-            card.setQuestion(flashCardForm.getQuestionTextField().getText());
-            card.setAnswer(flashCardForm.getAnswerTextField().getText());
+            card = new Card(flashCardForm.getQuestionTextField().getText(), flashCardForm.getAnswerTextField().getText());
 
             try {
                 addCardToDatabase();
