@@ -142,6 +142,8 @@ public class FlashCardForm {
         cardArea.setBounds(200, 75, 400, 200);
         cardArea.setBackground(flashCardColor());
         cardArea.setForeground(flashCardTextColor());
+        cardArea.setLineWrap(true);
+        cardArea.setWrapStyleWord(true);
 
         questionTextField = new JTextField();
         questionTextField.setBounds(220, 350, 300, 30);
