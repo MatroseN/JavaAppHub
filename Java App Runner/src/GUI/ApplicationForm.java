@@ -43,6 +43,9 @@ public class ApplicationForm {
         personalMessageArea.setEditable(false);
         personalMessageArea.setBackground(messageColor());
         personalMessageArea.setForeground(messageTextColor());
+        personalMessageArea.setLineWrap(true);
+        personalMessageArea.setWrapStyleWord(true);
+        personalMessageArea.setFont(personalMessageArea.getFont().deriveFont(18f));
     }
 
     private void buildButtons(){

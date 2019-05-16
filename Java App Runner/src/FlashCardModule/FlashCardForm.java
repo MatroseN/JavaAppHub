@@ -134,9 +134,6 @@ public class FlashCardForm {
 
     private void buildTextAreas(){
         cardArea = new JTextArea();
-        Font font = cardArea.getFont();
-        Font f2 = new Font(font.getFontName(), font.getStyle(), font.getSize()+3);
-        cardArea.setFont(f2);
 
         cardArea.setEditable(false);
         cardArea.setBounds(200, 75, 400, 200);
@@ -144,6 +141,7 @@ public class FlashCardForm {
         cardArea.setForeground(flashCardTextColor());
         cardArea.setLineWrap(true);
         cardArea.setWrapStyleWord(true);
+        cardArea.setFont(cardArea.getFont().deriveFont(18f));
 
         questionTextField = new JTextField();
         questionTextField.setBounds(220, 350, 300, 30);
