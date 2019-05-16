@@ -30,6 +30,11 @@ public class CreateAndAddFlashCard {
 
             flashCardForm.resetCreateFlashcardFields();
             try {
+                if(!flashCardForm.getIsPressed()) {
+                    flashCardForm.createAndAddFlashCardSetup();
+                    flashCardForm.setBackButtonVisible();
+                    flashCardForm.setIsPressed(true);
+                }
                 flashCardForm.setFlashCardIndex(getFlashCardsFromDatabase().size() - 1);
             } catch (SQLException e) {
                 e.printStackTrace();
