@@ -1,9 +1,6 @@
 package GUI;
 
-import Handlers.HamburgerButtonHandler;
-import Handlers.LogoutHandler;
-import Handlers.menuFormToApplicationFormHandler;
-import Handlers.menuFormToFlashCardsHandler;
+import Handlers.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,6 +27,9 @@ public class MenuForm {
 
         //Panel
        panelSetup();
+
+       //Add all the Elements
+       addElements();
    }
 
     private void panelSetup(){
@@ -72,13 +72,26 @@ public class MenuForm {
         flashCardNavButton.setOpaque(true);
 
         logoutButton = new JButton();
-        logoutButton.setBounds(230, 35, 110, 25);
+        logoutButton.setBounds(345, 35, 110, 25);
         logoutButton.setHorizontalTextPosition(SwingConstants.LEFT);
         logoutButton.setText("Logout");
         logoutButton.addActionListener(logoutHandler);
         logoutButton.setBackground(navButtonColor());
         logoutButton.setForeground(navButtonTextColor());
         logoutButton.setOpaque(true);
+
+        dailyQuoteNavButton = new JButton();
+        dailyQuoteNavButton.setBounds(230, 35, 110, 25);
+        dailyQuoteNavButton.setHorizontalTextPosition(SwingConstants.LEFT);
+        dailyQuoteNavButton.setText("Daily Quote");
+        dailyQuoteNavButton.addActionListener(dailyQuoteHandler);
+        dailyQuoteNavButton.setBackground(navButtonColor());
+        dailyQuoteNavButton.setForeground(navButtonTextColor());
+        dailyQuoteNavButton.setOpaque(true);
+    }
+
+    private void addElements(){
+        menuPanel.add(dailyQuoteNavButton);
     }
 
 
@@ -160,6 +173,7 @@ public class MenuForm {
     private ActionListener actionListener2 = new menuFormToFlashCardsHandler(this);
     private ActionListener actionListener3 = new menuFormToApplicationFormHandler(this);
     private ActionListener logoutHandler = new LogoutHandler(this);
+    private ActionListener dailyQuoteHandler = new SwitchFormHandler(this);
 
     private JPanel menuPanel;
 
@@ -168,6 +182,7 @@ public class MenuForm {
    private JButton flashCardNavButton;
    private JButton applicationNavButton;
    private JButton logoutButton;
+   private JButton dailyQuoteNavButton;
 
     private GUI gui;
 }

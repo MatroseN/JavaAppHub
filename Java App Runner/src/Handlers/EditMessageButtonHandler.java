@@ -19,7 +19,7 @@ public class EditMessageButtonHandler implements ActionListener{
     /*Makes textarea Editable and Saving changes possible when first pressed.
     If pressed again it Makes the textarea Not Editable and hides the Save button.*/
     private void setEditable(){
-        if(applicationForm.getPersonalMessageArea().isEditable() == false) {
+        if(!applicationForm.getPersonalMessageArea().isEditable()) {
             applicationForm.getPersonalMessageArea().setEditable(true);
             applicationForm.getSaveNewMessageButton().setVisible(true);
         } else{
