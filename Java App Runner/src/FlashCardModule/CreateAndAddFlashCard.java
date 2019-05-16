@@ -27,6 +27,10 @@ public class CreateAndAddFlashCard {
         }
     }
 
+    public int gaa(){
+        return 1337;
+    }
+
     private void addCardToDatabase() throws SQLException {
         statement = dbConnect.getStatement();
         String query = "insert into flashcard(question, answer, userID) values (?, ?, ?)";
