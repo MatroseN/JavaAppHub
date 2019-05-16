@@ -30,6 +30,8 @@ public class CreateAndAddFlashCard {
                 e.printStackTrace();
             }
 
+            flashCardForm.resetCreateFlashcardFields();
+
         }else {
             flashCardForm.getQuestionTextField().setText("Both Fields must have text!");
         }
