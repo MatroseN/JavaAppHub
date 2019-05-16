@@ -30,13 +30,14 @@ public class DailyQuoteForm{
     private void buildTextAreas(){
         webScraper = new WebScraper();
         quoteArea = new JTextArea(webScraper.getDailyQuote());
-        quoteArea.setBounds(225, 150, 400, 150);
+        quoteArea.setBounds(200, 150, 400, 150);
         quoteArea.setEditable(false);
         quoteArea.setBackground(quoteBoxColor());
         quoteArea.setForeground(quoteTextColor());
         quoteArea.setLineWrap(true);
         quoteArea.setWrapStyleWord(true);
         quoteArea.setFont(quoteArea.getFont().deriveFont(18f));
+        quoteArea.setMargin( new Insets(30, 10, 10, 10));
     }
 
     private Color quoteBoxColor(){

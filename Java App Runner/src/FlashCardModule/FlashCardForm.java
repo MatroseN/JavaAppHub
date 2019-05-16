@@ -142,6 +142,7 @@ public class FlashCardForm {
         cardArea.setLineWrap(true);
         cardArea.setWrapStyleWord(true);
         cardArea.setFont(cardArea.getFont().deriveFont(18f));
+        cardArea.setMargin( new Insets(30, 10, 10, 10));
 
         questionTextField = new JTextField();
         questionTextField.setBounds(220, 350, 300, 30);

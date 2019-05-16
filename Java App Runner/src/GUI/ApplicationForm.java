@@ -46,6 +46,7 @@ public class ApplicationForm {
         personalMessageArea.setLineWrap(true);
         personalMessageArea.setWrapStyleWord(true);
         personalMessageArea.setFont(personalMessageArea.getFont().deriveFont(18f));
+        personalMessageArea.setMargin( new Insets(20, 5, 5, 5));
     }
 
     private void buildButtons(){
