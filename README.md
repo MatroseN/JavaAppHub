@@ -22,3 +22,5 @@ Lets you create a new account. Every account has its own row in the database and
 The first application you will encounter is a personal message app. It lets you create a message and store it. This means that every user can create their own personal message that will always appear when that specific user logs in.  
 ### Flash Cards
 Flashcards is currently under construction but when it is done it will let you create your own Flash Cards and then test yourself on them.
+### Daily Quote
+Shows a new quote each day. The quote is scraped from a website that posts a daily quote every day.
